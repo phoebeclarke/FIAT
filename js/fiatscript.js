@@ -901,7 +901,7 @@ function DrawModelSelectBtns(plotType) {
         Euro4Btn.style.backgroundColor = "";
         UKVBtn.style.backgroundColor = "#63D13E"; // Changes the button background colour to indicate it's been clicked
         setForecastImg(Tabs[plotType]['modelFcstFilename']);
-        //changeModelText(plotType);
+        changeModelText(plotType);
     };
 
     Euro4Btn.onclick = function() { 
@@ -910,7 +910,7 @@ function DrawModelSelectBtns(plotType) {
         UKVBtn.style.backgroundColor = "";
         Euro4Btn.style.backgroundColor = "#63D13E"; // Changes the button background colour to indicate it's been clicked
         setForecastImg(Tabs[plotType]['modelFcstFilename']);
-        //changeModelText(plotType);
+        changeModelText(plotType);
     };
     
     ModelSelectDiv.appendChild(UKVBtn);
@@ -921,7 +921,6 @@ function DrawModelSelectBtns(plotType) {
     
     document.getElementsByClassName("ImgContainer")[forecastIndex].appendChild(ModelSelectDiv); // Selects the image container containing the forecast image using the array index
     document.getElementsByClassName("ImgText")[forecastIndex].innerHTML = chosenModel + " Forecast"; // Selects the text element containing the forecast information
-    //changeModelText(plotType);
     document.getElementById(chosenModel).style.backgroundColor = "#63D13E"; // Ensures the initially chosen/previously chosen model is remembered on tab switching
 }
 
@@ -1039,6 +1038,7 @@ function removeCloudTopColourBar() {
 function setCloudObsImg(chosenCloudObsType) {
     //cloudObsImgURL = UFOBaseURL + "/Obs_Data/Sat_" + chosenCloudObsType + "_" + selectedDate + Time + ".png";
     //ImageCheck('cloudObsImg', cloudObsImgURL);
+    cloudObsImgURL = imageFolder+"DataUnavailable.png";
 }
 // END Cloud obs type buttons scripting container
 
