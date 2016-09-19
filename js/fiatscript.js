@@ -1037,8 +1037,8 @@ function removeCloudTopColourBar() {
 
 function setCloudObsImg(chosenCloudObsType) {
     //cloudObsImgURL = UFOBaseURL + "/Obs_Data/Sat_" + chosenCloudObsType + "_" + selectedDate + Time + ".png";
-    //ImageCheck('cloudObsImg', cloudObsImgURL);
     cloudObsImgURL = imageFolder+"DataUnavailable.png";
+    ImageCheck('cloudObsImg', cloudObsImgURL);
 }
 // END Cloud obs type buttons scripting container
 
