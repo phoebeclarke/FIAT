@@ -5,18 +5,10 @@
 // Description:
 // Provides all Javascript functions for the FIAT.html website, for handling user input.
 //
-// Current Owner:  Mark Worsfold (MW)
-//
-// History:
-// Date       Ticket Comment
-// ---------- ------ -------
-// 
-// ---------- ------ End History
-//
 // End of header -------------------------------------------------------------------------------------
 
 // START General scripting container
-var windowLoaded = function() {
+window.onload = function() {
     DrawTabs();
     DrawFcstBtns();
     DrawHourSelectBtns();
@@ -24,11 +16,7 @@ var windowLoaded = function() {
     DrawModelRunDropdown();
     PopulateDateSelect();
     init();
-};
-
-$(document).ready(windowLoaded);
-$(document).on('page:load', windowLoaded); // Classic Turbolinks
-$(document).on('page:change', windowLoaded);
+}
 
 //START UKV PLOT INSERTION SECTION
 
@@ -38,8 +26,8 @@ $(document).on('page:change', windowLoaded);
 
 var FIATBaseURL = 'FIATPlots';
 var UFOBaseURL = 'http://www-nwp/~meso/UFO_VT';
-var iconFolder = "/assets/fiat/icons/";
-var imageFolder = "/assets/fiat/";
+var iconFolder = "images/icons/";
+var imageFolder = "images/";
 
 var MAXFORECASTVAL = 120; // How many forecast hour buttons will be drawn (the max t+Xh)
 var FcstInfo;
