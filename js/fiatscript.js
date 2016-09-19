@@ -25,7 +25,7 @@ window.onload = function() {
 //END UKV PLOT INSERTION SECTION
 
 var FIATBaseURL = 'FIATPlots';
-var UFOBaseURL = 'http://www-nwp/~meso/UFO_VT';
+//var UFOBaseURL = 'http://www-nwp/~meso/UFO_VT';
 var iconFolder = "images/icons/";
 var imageFolder = "images/";
 
@@ -740,7 +740,7 @@ however if this is done, if the image can't be found nothing will be displayed (
         // Create the image URL strings (the URL variable can be called anything; it just has to be sent as an argument to ImageCheck() or set using image.src = url)
         precipStationObsURL = FIATBaseURL + "/Observations/Precip_Station/" + obsDate + Time + ".png";
         precipModImgURL = FIATBaseURL + "/ModifiedForecasts/Modified_Rain_Rate/" + selectedDate + "/" + ModelRunStr + "Z/Rain_Rate_" + paddedhourOffsetIdStr + ".png";
-        precipRadarObsURL = UFOBaseURL + "/Obs_Data/Radar/" + obsDate + Time + ".png";
+        //precipRadarObsURL = UFOBaseURL + "/Obs_Data/Radar/" + obsDate + Time + ".png";
             
         // Check/assign the images using the ImageCheck function and the IDs set in the dictionary
         ImageCheck('precipitationStationObs', precipStationObsURL);
@@ -750,7 +750,7 @@ however if this is done, if the image can't be found nothing will be displayed (
     } else if (selectedTab == "Temperature") {
         tempStationObsURL = FIATBaseURL + "/Observations/Temp_Station/" + obsDate + Time + ".png";
         tempModImgURL = FIATBaseURL + "/ModifiedForecasts/Modified_Temperature_1p5m/" + selectedDate + "/" + ModelRunStr + "Z/Temperature_1p5m_" + paddedhourOffsetIdStr + ".png";
-        tempErrorMapURL = UFOBaseURL + "/Obs_Data/ScreenTemp_ErrorMap/" + obsDate + "/" + ModelRunStr + "Z/ScreenTemp-" + hourOffsetIdStr + ".png";
+        //tempErrorMapURL = UFOBaseURL + "/Obs_Data/ScreenTemp_ErrorMap/" + obsDate + "/" + ModelRunStr + "Z/ScreenTemp-" + hourOffsetIdStr + ".png";
             
         ImageCheck('temperatureStationObs', tempStationObsURL);
         ImageCheck('temperatureModImg', tempModImgURL);
@@ -1038,7 +1038,7 @@ function removeCloudTopColourBar() {
 }
 
 function setCloudObsImg(chosenCloudObsType) {
-    cloudObsImgURL = UFOBaseURL + "/Obs_Data/Sat_" + chosenCloudObsType + "_" + selectedDate + Time + ".png";
+    //cloudObsImgURL = UFOBaseURL + "/Obs_Data/Sat_" + chosenCloudObsType + "_" + selectedDate + Time + ".png";
     ImageCheck('cloudObsImg', cloudObsImgURL);
 }
 // END Cloud obs type buttons scripting container
