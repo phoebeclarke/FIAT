@@ -745,7 +745,7 @@ however if this is done, if the image can't be found nothing will be displayed (
         // Check/assign the images using the ImageCheck function and the IDs set in the dictionary
         ImageCheck('precipitationStationObs', precipStationObsURL);
         ImageCheck('precipitationModImg', precipModImgURL);
-        ImageCheck('precipitationRadarObs', precipRadarObsURL);
+        //ImageCheck('precipitationRadarObs', precipRadarObsURL);
             
     } else if (selectedTab == "Temperature") {
         tempStationObsURL = FIATBaseURL + "/Observations/Temp_Station/" + obsDate + Time + ".png";
@@ -754,7 +754,7 @@ however if this is done, if the image can't be found nothing will be displayed (
             
         ImageCheck('temperatureStationObs', tempStationObsURL);
         ImageCheck('temperatureModImg', tempModImgURL);
-        ImageCheck('temperatureErrorMap', tempErrorMapURL);
+        //ImageCheck('temperatureErrorMap', tempErrorMapURL);
     
     } else if (selectedTab == "Cloud") {
         cloudModImgURL = FIATBaseURL + "/ModifiedForecasts/Modified_Cloud/" + selectedDate + "/" + ModelRunStr + "Z/Cloud_" + paddedhourOffsetIdStr + ".png";
@@ -932,7 +932,6 @@ function changeModelText(plotType) {
     
     document.getElementsByClassName("ImgContainer")[forecastIndex].appendChild(ModelSelectDiv); // Selects the image container containing t$
     document.getElementsByClassName("ImgText")[forecastIndex].innerHTML = chosenModel + " Forecast"; // Selects the text element containing$
-    console.log(forecastIndex);
 }    
 
 // Sets the forecast image url on tabs containing the UKV/Euro4 buttons
@@ -1039,7 +1038,7 @@ function removeCloudTopColourBar() {
 
 function setCloudObsImg(chosenCloudObsType) {
     //cloudObsImgURL = UFOBaseURL + "/Obs_Data/Sat_" + chosenCloudObsType + "_" + selectedDate + Time + ".png";
-    ImageCheck('cloudObsImg', cloudObsImgURL);
+    //ImageCheck('cloudObsImg', cloudObsImgURL);
 }
 // END Cloud obs type buttons scripting container
 
