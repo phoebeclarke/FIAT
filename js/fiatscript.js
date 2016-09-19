@@ -289,7 +289,6 @@ function DrawPaneContent() {
     for (var i = 0; i < tab.imgIds.length; i++){
         var imgContainer = document.createElement("DIV");
         imgContainer.setAttribute("class", "ImgContainer");
-        imgContainer.style.width = ((100 / tab.imgIds.length) - 1) + "%";
         
         var img = document.createElement("IMG");
         img.id = tab.imgIds[i]; // The image ids are predefined in the Tabs dictionary
@@ -298,7 +297,7 @@ function DrawPaneContent() {
             // We want to apply a slider to the radar and station observation plots in the precip tab
             imgCover = document.createElement("IMG");
             imgCover.id = "cover";
-			   imgCover.style.height="585px";
+			   imgCover.style.height="30em";
             imgCover.style.position = "absolute";
             imgCover.style.overflow = "hidden";
             imgCover.style.textAlign = "initial";
@@ -1055,7 +1054,7 @@ function slider(event) {
             XOffset = event.pageX - $("#cover").parent().offset().left;
         }
         else if (SliderEnabled == 0) {
-            XOffset = "480";
+            XOffset = "330";
         }
         // Set the width of the radar observation image cover
         $("#cover").width(XOffset);
@@ -1072,3 +1071,4 @@ function SliderActivation() {
     SliderEnabled ^= 1; // Toggles the value of SliderEnabled between 1 and 0
 }
 // END Slider scripting container
+
