@@ -289,6 +289,7 @@ function DrawPaneContent() {
     for (var i = 0; i < tab.imgIds.length; i++){
         var imgContainer = document.createElement("DIV");
         imgContainer.setAttribute("class", "ImgContainer");
+        imgContainer.width = ((100 / tab.imgIds.length) - 1) + "%";
         
         var img = document.createElement("IMG");
         img.id = tab.imgIds[i]; // The image ids are predefined in the Tabs dictionary
@@ -310,7 +311,7 @@ function DrawPaneContent() {
             imgContainer.appendChild(img);
         }
         
-		  var imgTextContainer = document.createElement("DIV");
+	var imgTextContainer = document.createElement("DIV");
         imgTextContainer.setAttribute("class", "ImgText");
         var imgTitle = document.createElement("H4");
         imgTitle.innerHTML = tab.imgTitles[i]; // Gets the text underneath the images from the dictionary
