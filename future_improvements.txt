@@ -1,0 +1,71 @@
+
+/*
+How I was considering implementing the URL feature;
+each time a user clicks an hour button, the selected date and model run are fetched.
+This info is then appended to the current URL (along with the hour selected).
+Each piece of info should be separated with the same character, so the string can be
+split and the info can be retrieved. Here I've used pipe ("|") but none alphabetical/numerical
+character could be used.
+There should also be some indication to show the end of the base URL (http://www-nwp/~pclarke/FIAT/html/FIAT.html)
+and the start of the information string. Here I've used "?", but again, any non letter/number can be used.
+
+This way the URL can be split on "?", then the second part containing the information can be split again (on "|").
+If the URL wasn't split twice, if trying to access the first piece of info (URL.[0]) you'd get the entire base URL and the info.
+
+This string can then be appended to the webpage however you want (here I've gone for a text node, which is just text. No P or H1 etc).
+
+The next stage was to set the URL itself. This can be done with window.location.href, but doing so will cause the webpage to follow the url
+unless you use some method to stop it doing so (I hadn't looked into this).
+
+The trickiest part is when to read the URL. This could theoretically be done each time the page loads (onload), but I get the feeling it
+won't be that straightforward.
+Once the URL is read, it can be split and the information can be retrieved. This then needs to be set as the chosen options; that's
+straightforward, but a bit fiddly. With the current setup the index values of the chosen options are stored/read from the URL;
+the selected option in the Date and Model Run dropdowns can then be set using these integers by calling CalculateFcstInformation()
+and supplying the arguments.
+Theoretically things should propogate from there; using the index values the chosen option strings are fetched, then these are converted
+into all of the various urls, which are set for the plots (using UpdateImgURLs()).
+The code here mostly handles the writing/reading, I just hadn't worked out -when- to read. (Writing can be done by setting another
+onclick handler to the forecast buttons, which I've done and commented out in DrawFcstBtns() [the GenerateURL() function]).
+ReadURL() would need to initially be called in either the init() function, or the window.onload function (at the very top of the document).
+It would also need to be called if the user clicked on the displayed link? I'm unsure. Clicking on the link would cause the page to refresh
+and I'm assuming window.onload and init() would be called anyway, but I haven't checked this.
+
+*/
+//function GenerateURL() {
+//    clickedBtn = document.getElementsByClassName("active")[0];
+//    console.log("Generated using: " + clickedBtn);
+//    
+//    URL = 
+//        window.location.href.split("?")[0] // This gets the base URL and reappends the information
+//        + "?" 
+//        + clickedBtn.id
+//        + "|"
+//        + dateDropdown.selectedIndex
+//        + "|"
+//        + modelRunDropdown.selectedIndex;
+//        
+//    URLText = document.createTextNode(URL);
+//    document.getElementById("InnerContainer").appendChild(URLText);
+//}
+
+//function ReadURL() {
+//    var URL = window.location.href;
+//    
+//    if (URL.indexOf("?") != -1) {
+//        AllURLInfo = URL.split("?")[1];
+//        console.log("info in url: " + AllURLInfo);
+//        
+//        URLInfo = AllURLInfo.split("|");
+//        
+//        selectedMRIndex = URLInfo[0];
+//        selectedDateIndex = URLInfo[1];
+//        clickedBtnId = URLInfo[2];
+//        
+//        CalculateFcstInformation(selectedMRIndex, selectedDateIndex, clickedBtnId);
+//        
+//    } else {
+//        console.log("no info");
+
+//    }
+//}
