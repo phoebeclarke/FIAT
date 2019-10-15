@@ -18,11 +18,11 @@ window.onload = function() {
     init();
 }
 
-//START UKV PLOT INSERTION SECTION
+// START UKV PLOT INSERTION SECTION
 
  var PlotPrecipUKV = 1;
 
-//END UKV PLOT INSERTION SECTION
+// END UKV PLOT INSERTION SECTION
 
 var FIATBaseURL = 'FIATPlots';
 //var UFOBaseURL = 'http://www-nwp/~meso/UFO_VT';
@@ -68,11 +68,11 @@ var Time;
 var DateModelRun = {};
 var DateStr = "";
 
-//START DATE STRING INSERTION SECTION
+// START DATE STRING INSERTION SECTION
 
  DateModelRun={'20160823':'00Z,06Z,12Z,18Z','20160824':'00Z,06Z,12Z,18Z','20160825':'00Z,06Z,12Z,18Z','20160826':'00Z,06Z',}
 
-//END DATE STRING INSERTION SECTION
+// END DATE STRING INSERTION SECTION
 
 /*
 Below is a dictionary of dictionaries containing all information about each individual tab.
@@ -151,7 +151,7 @@ function init(){
 // Checks whether the URL for the image id exists, and if not loads "ObsUnavailable" instead
 function ImageCheck(id, url) {
   $('#'+ id).attr('src', url).error(function() {
-      $(this).attr("src", imageFolder+"DataUnavailable.png");
+      $(this).attr("src", imageFolder + "DataUnavailable.png");
   });
 }
 // END General scripting container
@@ -169,7 +169,7 @@ function DrawTabs() {
         
         setTabIcon(tab);
 
-        /*START Container for tab animation*/
+        /* START Container for tab animation */
         // Remove the code in the animation containers to stop the expansion/collapse of the tabs
         tab.onmouseover = function() { 
             if (!$(this).hasClass("chosen")) {
@@ -203,7 +203,7 @@ function setTabIcon(tab) {
     }
 }
 
-/*START Container for tab animation functions*/
+/* START Container for tab animation functions */
 function ExpandTab(tab) {
     // offsetWidth is the width of the element including the padding and border, but not the margin, in pixels
     var currentWidth = tab.offsetWidth;
@@ -251,7 +251,7 @@ function CollapseTab(tab, speed) {
     }, speed); // How often the decreaseWidth() function should be called in ms
                // Essentially the speed of the animation
 }
-/*END Container for tab animation functions*/
+/* END Container for tab animation functions */
 
 function SelectTab(chosenTab){
     $(".chosen").each(function() {
@@ -259,11 +259,11 @@ function SelectTab(chosenTab){
     });
     $(chosenTab).addClass("chosen");
     
-    /*START Tab animation container*/
+    /* START Tab animation container */
     $(".tab:not('.chosen')").each(function() {
         CollapseTab(this, 9); // Makes sure all other tabs are collapsed
     });
-    /*END Tab animation container*/
+    /* END Tab animation container */
     
     chosenTab.innerHTML = chosenTab.id; // Sets the text inside the tab
     ClearPaneContent();
@@ -631,77 +631,6 @@ function CalculateFcstInformation(selectedDateIndex, selectedModelRunIndex, clic
     UpdateImgURLs();
 }
 
-/* WORK IN PROGRESS 
-How I was considering implementing the URL feature;
-each time a user clicks an hour button, the selected date and model run are fetched.
-This info is then appended to the current URL (along with the hour selected).
-Each piece of info should be separated with the same character, so the string can be
-split and the info can be retrieved. Here I've used pipe ("|") but none alphabetical/numerical
-character could be used.
-There should also be some indication to show the end of the base URL (http://www-nwp/~pclarke/FIAT/html/FIAT.html)
-and the start of the information string. Here I've used "?", but again, any non letter/number can be used.
-
-This way the URL can be split on "?", then the second part containing the information can be split again (on "|").
-If the URL wasn't split twice, if trying to access the first piece of info (URL.[0]) you'd get the entire base URL and the info.
-
-This string can then be appended to the webpage however you want (here I've gone for a text node, which is just text. No P or H1 etc).
-
-The next stage was to set the URL itself. This can be done with window.location.href, but doing so will cause the webpage to follow the url
-unless you use some method to stop it doing so (I hadn't looked into this).
-
-The trickiest part is when to read the URL. This could theoretically be done each time the page loads (onload), but I get the feeling it
-won't be that straightforward.
-Once the URL is read, it can be split and the information can be retrieved. This then needs to be set as the chosen options; that's
-straightforward, but a bit fiddly. With the current setup the index values of the chosen options are stored/read from the URL;
-the selected option in the Date and Model Run dropdowns can then be set using these integers by calling CalculateFcstInformation()
-and supplying the arguments.
-Theoretically things should propogate from there; using the index values the chosen option strings are fetched, then these are converted
-into all of the various urls, which are set for the plots (using UpdateImgURLs()).
-The code here mostly handles the writing/reading, I just hadn't worked out -when- to read. (Writing can be done by setting another
-onclick handler to the forecast buttons, which I've done and commented out in DrawFcstBtns() [the GenerateURL() function]).
-ReadURL() would need to initially be called in either the init() function, or the window.onload function (at the very top of the document).
-It would also need to be called if the user clicked on the displayed link? I'm unsure. Clicking on the link would cause the page to refresh
-and I'm assuming window.onload and init() would be called anyway, but I haven't checked this.
-
-*/
-//function GenerateURL() {
-//    clickedBtn = document.getElementsByClassName("active")[0];
-//    console.log("Generated using: " + clickedBtn);
-//    
-//    URL = 
-//        window.location.href.split("?")[0] // This gets the base URL and reappends the information
-//        + "?" 
-//        + clickedBtn.id
-//        + "|"
-//        + dateDropdown.selectedIndex
-//        + "|"
-//        + modelRunDropdown.selectedIndex;
-//        
-//    URLText = document.createTextNode(URL);
-//    document.getElementById("InnerContainer").appendChild(URLText);
-//}
-
-//function ReadURL() {
-//    var URL = window.location.href;
-//    
-//    if (URL.indexOf("?") != -1) {
-//        AllURLInfo = URL.split("?")[1];
-//        console.log("info in url: " + AllURLInfo);
-//        
-//        URLInfo = AllURLInfo.split("|");
-//        
-//        selectedMRIndex = URLInfo[0];
-//        selectedDateIndex = URLInfo[1];
-//        clickedBtnId = URLInfo[2];
-//        
-//        CalculateFcstInformation(selectedMRIndex, selectedDateIndex, clickedBtnId);
-//        
-//    } else {
-//        console.log("no info");
-
-//    }
-//}
-
 // Works out the date from the clicked hour, if the date is not in the dropdown
 // (I.e. looking at a forecast for a future date)
 function calculateDate() {
@@ -785,14 +714,12 @@ however if this is done, if the image can't be found nothing will be displayed (
 // Returns day of the week represented by the supplied index number
 function getDayInText(num) {
     daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    day = daysOfWeek[num];
-    return day;
+    return daysOfWeek[num];
 }
 // Returns month of the year represented by the supplied index number
 function getMonthInText(num) {
     monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    month = monthsOfYear[num];
-    return month;
+    return monthsOfYear[num];
 }
 
 // Function to draw the forecast hour buttons in the sidebar on the right
@@ -852,7 +779,7 @@ function UpdateFcstButtonText(){
     var ModelRun = $("#ModelRunDropdown").val(); // Gets the selected model run
     document.activeElement.blur(); // Removes focus from the model run dropdown to prevent the arrow keys changing the chosen model run
     
-    for ( var i = 0; i <= MAXFORECASTVAL; i++) {
+    for (var i = 0; i <= MAXFORECASTVAL; i++) {
         
         ForecastStr = i.toString();
         
@@ -864,7 +791,7 @@ function UpdateFcstButtonText(){
 
         // Pad time string with zeros
         var TimeStr = TimeInt.toString();
-        TimeStr = ("00"+TimeStr).slice(-2)+"00";
+        TimeStr = ("00" + TimeStr).slice(-2) + "00";
 
         // Sets the hour text on the forecast hour button
         document.getElementById("FcstSel"+ForecastStr).innerHTML="+"+ForecastStr+" hrs - "+TimeStr;
